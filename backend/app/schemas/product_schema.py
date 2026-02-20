@@ -1,11 +1,15 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class ProductCreate(BaseModel):
-    user_id: int
-    product_url: str
-    product_name: str
-    platform: str
+    name: str
+    category: Optional[str] = None
+    brand: Optional[str] = None
+
+
+class ProductResponse(ProductCreate):
+    id: int
 
     class Config:
         from_attributes = True
